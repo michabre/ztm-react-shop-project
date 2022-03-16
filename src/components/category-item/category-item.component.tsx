@@ -1,6 +1,11 @@
 import './category-item.styles.scss'
 
-const CategoryItem = ({ category }:{category:any}) => {
+type CategoryItemProps = {
+    title:string,
+    imageUrl: string
+}
+
+const CategoryItem = ({ category }:{ category:CategoryItemProps }) => {
     const { title, imageUrl } = category
 
     return (
