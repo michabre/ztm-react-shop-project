@@ -5,6 +5,8 @@ import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+const rootElement = document.getElementById('root')
+
 
 
 ReactDOM.render(
@@ -13,7 +15,7 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  rootElement
 )
 
 // If you want to start measuring performance in your app, pass a function
