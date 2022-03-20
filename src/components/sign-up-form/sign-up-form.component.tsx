@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import FormInput from '../form-input/form-input.component'
+
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
 
 const defaultFormFields = {
@@ -50,17 +52,52 @@ const SignUpForm = () => {
     <div>
       <h3>Sign Up with your email and password</h3>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input type="text" onChange={handleChange} name="displayName" value={displayName} required />
+        
+        <FormInput 
+          label="Display Name" 
+          inputOptions = {{
+            type:"text", 
+            onChange: handleChange,
+            name: "displayName", 
+            value: displayName, 
+            required: true
+          }}
+          
+        />
 
-        <label>Email</label>
-        <input type="email" onChange={handleChange} name='email' value={email} required />
+        <FormInput 
+          label="Email" 
+          inputOptions = {{
+            type: "email", 
+            onChange: handleChange, 
+            name: 'email', 
+            value: email,
+            required: true
+          }}
 
-        <label>Password</label>
-        <input type="password" onChange={handleChange} name='password' value={password} required />
+        />
 
-        <label>Confirm Password</label>
-        <input type="password" onChange={handleChange} name='confirmPassword' value={confirmPassword} required />
+        <FormInput 
+          label="Password" 
+          inputOptions = {{
+            type:"password", 
+            onChange: handleChange, 
+            name: 'password', 
+            value: password,
+            required: true
+          }}
+        />
+
+        <FormInput 
+          label="Confirm Password" 
+          inputOptions = {{
+            type:"password", 
+            onChange: handleChange, 
+            name: 'confirmPassword', 
+            value: confirmPassword,
+            required: true
+          }}
+        />
 
         <button type="submit">Submit</button>
       </form>
