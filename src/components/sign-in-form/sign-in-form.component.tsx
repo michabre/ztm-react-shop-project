@@ -38,7 +38,19 @@ const SignInForm = () => {
       console.log(response)
       resetFormFields()
     } catch(error:any) {
-      console.log(error)
+      switch (error.code) {
+        case 'auth/wrong-password':
+          console.log('incorrect password for email')
+          break
+        case 'auth/user-not-found':
+          console.log('no user associated with this email')
+          break
+        case 'auth/popup-closed-by-user':
+          console.log('user cancelled sign in')
+          break
+        default:
+          console.log(error)
+      }
     }
   }
 
@@ -53,8 +65,6 @@ const SignInForm = () => {
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         
-      
-
         <FormInput 
           label="Email" 
           inputOptions = {{
@@ -87,6 +97,7 @@ const SignInForm = () => {
         <Button 
           buttonType='google'
           inputOptions = {{
+            type:"button",
             onClick: signInWithGoogle
           }}>Google Sign In</Button>
           
