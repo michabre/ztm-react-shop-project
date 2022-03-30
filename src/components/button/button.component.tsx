@@ -9,7 +9,7 @@ const BUTTON_TYPE_CLASSES: ButtonClasses = {
   inverted: 'inverted'
 }
 
-const Button = ({ children, buttonType, inputOptions }:{ children:any, buttonType: string, inputOptions:any }) => {
+const Button = ({ children, buttonType, inputOptions }:{ children:JSX.Element|string, buttonType: string, inputOptions:any }) => {
 
   let buttonClass = buttonType ? BUTTON_TYPE_CLASSES[buttonType] : ''
 
