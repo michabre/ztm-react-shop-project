@@ -14,11 +14,22 @@ const addCartItem = (cartItems:any[], productToAdd:any) => {
   return [...cartItems, {...productToAdd, quantity: 1}]
 }
 
+const removeCartItem = (cartItems:any[], productToAdd:any) => {
+  const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
+  if (existingCartItem) {
+    return cartItems.filter((cartItem) => 
+      cartItem.id !== productToAdd.id 
+    )
+  }
+  return [...cartItems]
+}
+
 interface CartContextInterface {
   isCartOpen: boolean
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
   cartItems: any[]
   addItemToCart: any
+  removeItemFromCart: any
   cartCount: number
 }
 
@@ -27,6 +38,7 @@ const CartContext = createContext<CartContextInterface>({
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: (a:any,b:any) => {},
+  removeItemFromCart: (a:any) => {},
   cartCount: 0
 })
 
@@ -47,7 +59,12 @@ const CartProvider = ({children}:{children:JSX.Element}) => {
     setCartItems( a )
   }
 
-  const value:CartContextInterface = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, cartCount}
+  const removeItemFromCart = (productToRemove:any) => {
+    let a: any = removeCartItem(cartItems, productToRemove)
+    setCartItems( a )
+  }
+
+  const value:CartContextInterface = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, removeItemFromCart, cartCount}
   return (
     <CartContext.Provider value={value}>{children}</CartContext.Provider>
   )
