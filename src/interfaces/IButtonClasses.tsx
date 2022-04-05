@@ -1,5 +1,5 @@
 interface IButtonClasses {
-  [key: string]: string | number;
+  [key: string]: string | number
 }
 
 export default IButtonClasses

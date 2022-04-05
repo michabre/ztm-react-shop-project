@@ -5,9 +5,10 @@ import Product from "@interfaces/IProduct"
 import './checkout.styles.scss'
 
 const Checkout = () => {
-  const  { removeItemFromCart, cartItems } = useContext(CartContext)
+  const  { removeItemFromCart, cartItems, updateQuantity } = useContext(CartContext)
   let total: number = 0
   const removeItem = (product:Product) => removeItemFromCart(product)
+  const quantityHandler = (type:string, product:Product) => updateQuantity(type, product)
 
   return (
     <div className='checkout-container'>
@@ -33,9 +34,9 @@ const Checkout = () => {
                 <td><img src={item.imageUrl} alt={item.name} /></td>
                 <td>{item.name}</td>
                 <td>
-                  <button onClick={() => { console.log('decrease')} }>&#60;</button>
+                  <button onClick={() => { quantityHandler('decrease', item)} }>&#60;</button>
                     {item.quantity}
-                  <button onClick={() => { console.log('increase')} }>&#62;</button>
+                  <button onClick={() => { quantityHandler('increase', item)} }>&#62;</button>
                 </td>
                 <td>{item.price}</td>
                 <td><button onClick={() => { 
