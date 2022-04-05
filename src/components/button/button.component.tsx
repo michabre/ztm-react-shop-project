@@ -3,10 +3,6 @@ import IButtonClasses from '@interfaces/IButtonClasses'
 
 import './button.styles.scss'
 
-// interface ButtonClasses {
-//   [key: string]: string | number;
-// }
-
 const BUTTON_TYPE_CLASSES: IButtonClasses = {
   default: '',
   google: 'google-sign-in',

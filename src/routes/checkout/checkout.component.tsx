@@ -1,19 +1,20 @@
 import { useContext } from "react"
 import { CartContext } from "../../contexts/cart.context"
+import Product from "@interfaces/IProduct"
 
 import './checkout.styles.scss'
 
 const Checkout = () => {
   const  { removeItemFromCart, cartItems } = useContext(CartContext)
   let total: number = 0
-  const removeItem = (product:any) => removeItemFromCart(product)
+  const removeItem = (product:Product) => removeItemFromCart(product)
 
   return (
     <div className='checkout-container'>
       <h2 className='title'>Checkout Section</h2>
       {cartItems.length <= 0 && <p>No products have been added to the cart.</p>}
 
-      <table>
+      <table className="product-table">
         <caption>This is the checkout table</caption>
         <thead>
           <tr>

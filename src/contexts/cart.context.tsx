@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react"
+import Product from "@interfaces/IProduct"
 
-const addCartItem = (cartItems:any[], productToAdd:any) => {
+const addCartItem = (cartItems:Product[], productToAdd:Product) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
 
   if (existingCartItem) {
@@ -14,7 +15,7 @@ const addCartItem = (cartItems:any[], productToAdd:any) => {
   return [...cartItems, {...productToAdd, quantity: 1}]
 }
 
-const removeCartItem = (cartItems:any[], productToAdd:any) => {
+const removeCartItem = (cartItems:Product[], productToAdd:Product) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
   if (existingCartItem) {
     return cartItems.filter((cartItem) => 
@@ -24,10 +25,14 @@ const removeCartItem = (cartItems:any[], productToAdd:any) => {
   return [...cartItems]
 }
 
+const updateQuantity = (cartItem:Product) => {
+
+}
+
 interface CartContextInterface {
   isCartOpen: boolean
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
-  cartItems: any[]
+  cartItems: Product[]
   addItemToCart: any
   removeItemFromCart: any
   cartCount: number
@@ -54,12 +59,12 @@ const CartProvider = ({children}:{children:JSX.Element}) => {
     setCartCount(newCartCount)
   }, [cartItems])
 
-  const addItemToCart = (productToAdd:any) => {
+  const addItemToCart = (productToAdd:Product) => {
     let a:any = addCartItem(cartItems, productToAdd)
     setCartItems( a )
   }
 
-  const removeItemFromCart = (productToRemove:any) => {
+  const removeItemFromCart = (productToRemove:Product) => {
     let a: any = removeCartItem(cartItems, productToRemove)
     setCartItems( a )
   }

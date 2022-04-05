@@ -1,11 +1,8 @@
+import ICategoryItem from '@interfaces/ICategoryItem'
+
 import './category-item.styles.scss'
 
-type CategoryItemProps = {
-    title:string,
-    imageUrl: string
-}
-
-const CategoryItem = ({ category }:{ category:CategoryItemProps }) => {
+const CategoryItem = ({ category }:{ category:ICategoryItem }) => {
     const { title, imageUrl } = category
 
     return (

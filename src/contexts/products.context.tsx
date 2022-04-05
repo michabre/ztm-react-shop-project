@@ -1,25 +1,20 @@
 import { createContext, useState } from "react"
+import IProducts from "@interfaces/IProducts";
 
 import PRODUCTS from '../shop-data.json'
-interface ProductsContextInterface {
-  products: {
-    id: number;
-    name: string;
-    imageUrl: string;
-    price: number;
-  }[]
-}
 
-const ProductsContext = createContext<ProductsContextInterface | {products:any}>({products: {
+
+const ProductsContext = createContext<IProducts | {products:any}>({products:{
   id: 0,
   name: "",
   imageUrl: "",
-  price: 0
+  price: 0,
+  quantity: 0,
 }});
 
 const ProductsProvider = ({ children }:{children: JSX.Element}) => {
   const [products, setProducts] = useState(PRODUCTS)
-  const sampleAppContext: ProductsContextInterface = { products };
+  const sampleAppContext:any = { products }
   return (
     <ProductsContext.Provider value={sampleAppContext}>{children}</ProductsContext.Provider>
   )
