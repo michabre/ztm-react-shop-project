@@ -18,12 +18,19 @@ const addCartItem = (cartItems:Product[], productToAdd:Product) => {
 
 const removeCartItem = (cartItems:Product[], productToAdd:Product) => {
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
-  if (existingCartItem) {
+
+  if (existingCartItem?.quantity === 1) {
     return cartItems.filter((cartItem) => 
       cartItem.id !== productToAdd.id 
     )
   }
-  return [...cartItems]
+
+  //return [...cartItems]
+  return cartItems.map((cartItem) => 
+  cartItem.id === productToAdd.id 
+  ? {...cartItem, quantity: cartItem.quantity - 1}
+  : cartItem
+)
 }
 
 const updateItemQuantity = (cartItems:Product[], qType:string, productToUpdate:Product) => {

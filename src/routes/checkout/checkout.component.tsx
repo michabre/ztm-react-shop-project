@@ -5,7 +5,7 @@ import Product from "@interfaces/IProduct"
 import './checkout.styles.scss'
 
 const Checkout = () => {
-  const  { removeItemFromCart, cartItems, updateQuantity } = useContext(CartContext)
+  const { removeItemFromCart, cartItems, updateQuantity } = useContext(CartContext)
   let total: number = 0
   const removeItem = (product:Product) => removeItemFromCart(product)
   const quantityHandler = (type:string, product:Product) => updateQuantity(type, product)
