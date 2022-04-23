@@ -16,18 +16,18 @@ const addCartItem = (cartItems:Product[], productToAdd:Product) => {
   return [...cartItems, {...productToAdd, quantity: 1}]
 }
 
-const removeCartItem = (cartItems:Product[], productToAdd:Product) => {
-  const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id)
+const removeCartItem = (cartItems:Product[], productToRemove:Product) => {
+  const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToRemove.id)
 
   if (existingCartItem?.quantity === 1) {
     return cartItems.filter((cartItem) => 
-      cartItem.id !== productToAdd.id 
+      cartItem.id !== productToRemove.id 
     )
   }
 
   //return [...cartItems]
   return cartItems.map((cartItem) => 
-  cartItem.id === productToAdd.id 
+  cartItem.id === productToRemove.id 
   ? {...cartItem, quantity: cartItem.quantity - 1}
   : cartItem
 )
