@@ -8,8 +8,7 @@ interface ICart {
   removeItemFromCart: any
   clearItemFromCart: any
   cartCount: number,
-  cartTotal: number,
-  updateQuantity: any
+  cartTotal: number
 }
 
 export default ICart

@@ -1,6 +1,5 @@
 import { useContext } from "react"
 import { CartContext } from "../../contexts/cart.context"
-import Product from "@interfaces/IProduct"
 import CheckoutItem from "components/checkout-item/checkout-item.component"
 
 import './checkout.styles.scss'
