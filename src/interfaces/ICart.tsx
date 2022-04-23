@@ -6,7 +6,9 @@ interface ICart {
   cartItems: Product[]
   addItemToCart: any
   removeItemFromCart: any
+  clearItemFromCart: any
   cartCount: number,
+  cartTotal: number,
   updateQuantity: any
 }
 
