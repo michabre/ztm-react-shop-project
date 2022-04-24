@@ -40,9 +40,9 @@ const CartContext = createContext<ICart>({
   isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
-  addItemToCart: (item:Product) => {},
-  removeItemFromCart: (item:Product) => {},
-  clearItemFromCart: (item:Product) => {},
+  addItemToCart: () => {},
+  removeItemFromCart: () => {},
+  clearItemFromCart: () => {},
   cartCount: 0,
   cartTotal: 0
 })
