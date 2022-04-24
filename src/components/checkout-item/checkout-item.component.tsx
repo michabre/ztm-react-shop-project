@@ -1,5 +1,10 @@
 import { useContext } from "react"
+import { Box, Flex, Text } from '@chakra-ui/react'
 import { CartContext } from "../../contexts/cart.context"
+import { MinusIcon, AddIcon, DeleteIcon } from '@chakra-ui/icons'
+import { FaDollarSign } from 'react-icons/fa';
+
+
 
 import "./checkout-item.styles.scss"
 
@@ -14,14 +19,25 @@ const CheckoutItem = ({ cartItem }:{ cartItem:any }) => {
   return (
     <tr>
       <td><div className="image-container"><img src={imageUrl} alt={name} /></div></td>
-      <td className="name">{name}</td>
+      <td className="name"><Text align={'center'}>{name}</Text></td>
       <td className="quantity">
-        <button className="arrow" onClick={decreaseItemHandler}>&#60;</button>
-        <span className="value">{quantity}</span>
-        <button className="arrow" onClick={addItemHandler}>&#62;</button>
+        <Flex justify={'center'}>
+          <button className="arrow" onClick={decreaseItemHandler}><MinusIcon /></button>
+          <Box m={4}><span className="value">{quantity}</span></Box>
+          <button className="arrow" onClick={addItemHandler}><AddIcon /></button>
+        </Flex>
       </td>
-      <td className="price">{price}</td>
-      <td className="remove-button"><button onClick={clearItemHandler}>&times;</button></td>
+      <td className="price">
+        <Flex justify={'center'}>
+          <FaDollarSign /> 
+          {price}
+        </Flex>
+      </td>
+      <td className="remove-button">
+        <Flex justify={'center'}>
+          <button onClick={clearItemHandler}><DeleteIcon /></button>
+        </Flex>
+      </td>
     </tr>
   )
 

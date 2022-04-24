@@ -1,7 +1,8 @@
 import { useContext } from "react"
+import { Box, Flex, Text } from '@chakra-ui/react'
 import { CartContext } from "../../contexts/cart.context"
 import CheckoutItem from "components/checkout-item/checkout-item.component"
-
+import { FaDollarSign } from 'react-icons/fa';
 import './checkout.styles.scss'
 
 const Checkout = () => {
@@ -31,8 +32,13 @@ const Checkout = () => {
           </tbody>
           <tfoot>
           <tr>
-              <th scope="row">Total</th>
-              <td>${cartTotal}</td>
+            <td colSpan={5}>
+              <Flex justify={'right'}>
+                <Text>Total</Text>
+                <FaDollarSign /> 
+                {cartTotal}
+              </Flex>
+            </td>
           </tr>
           </tfoot>
         </table>
