@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
 import { CartContext } from "../../contexts/cart.context"
 import CheckoutItem from "components/checkout-item/checkout-item.component"
 import { FaDollarSign } from 'react-icons/fa';

@@ -1,7 +1,7 @@
 import Product from "@interfaces/IProduct"
 
 interface IProducts {
-  products: Product[]
+  categoriesMap: Product[]
 }
 
 export default IProducts
