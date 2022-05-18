@@ -17,7 +17,8 @@ import { signOutUser } from '../../utils/firebase/firebase.utils'
 
 import { ReactComponent as CrwnLogo } from '../../assets/logo.svg'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import './navigation.styles.scss'
+
+import {NavigationContainer, NavLinks, NavLink, LogoContainer} from  './navigation.styles'
 
 const Navigation = ({ mode, current }:{ mode:any, current:any }) => {
   let icon = current === 'light' ? <SunIcon /> : <MoonIcon />
@@ -30,26 +31,26 @@ const Navigation = ({ mode, current }:{ mode:any, current:any }) => {
 
     return(
       <>
-        <div className='navigation'>
-          <Link className='logo-container' to='/'>
+        <NavigationContainer>
+          <LogoContainer to='/'>
             <CrwnLogo />
-          </Link>
-          <div className='nav-links-container'>
+          </LogoContainer>
+          <NavLinks>
             <ButtonGroup variant='outline' spacing='2'>
                 <Button leftIcon={icon} onClick={mode}>
                 I prefer the&nbsp;<strong>{current}</strong>
                 </Button>
             </ButtonGroup>
-            <Link className='nav-link' to="/shop">Shop</Link> 
+            <NavLink as='span' to="/shop">Shop</NavLink> 
             {
               currentUser ? (
-                <span className='nav-link' onClick={signOutHandler}>Sign Out</span>
-              ): (<Link className='nav-link' to="/auth">Sign In</Link> )
+                <NavLink as='span' onClick={signOutHandler}>Sign Out</NavLink>
+              ): (<NavLink as='span' to="/auth">Sign In</NavLink> )
             }
             <CartIcon />
-          </div>
+          </NavLinks>
           {isCartOpen && (<CartDropdown />)}
-        </div>
+        </NavigationContainer>
         <Outlet />
       </>
     )
